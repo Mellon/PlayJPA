@@ -41,13 +41,13 @@ public class JPAServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Husband husband = new Husband();
-        Husband husband2 = new Husband();
         Wife wife = new Wife();
-        Collection<Husband> husbands = new ArrayList<>();
-        husbands.add(husband);
-        husbands.add(husband2);
-        wife.setHusbands(husbands);
-        wifeFacade.create(wife);
+        Wife wife2 = new Wife();
+        Collection<Wife> wives = new ArrayList<>();
+        wives.add(wife);
+        wives.add(wife2);
+        husband.setWives(wives);
+        husbandFacade.create(husband);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

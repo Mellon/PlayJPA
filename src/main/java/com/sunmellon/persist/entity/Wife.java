@@ -27,23 +27,12 @@ public class Wife implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToMany(cascade = CascadeType.PERSIST)
-    private Collection<Husband> husbands;
-    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Collection<Husband> getHusbands() {
-        return husbands;
-    }
-
-    public void setHusbands(Collection<Husband> husbands) {
-        this.husbands = husbands;
     }
     
     @Override

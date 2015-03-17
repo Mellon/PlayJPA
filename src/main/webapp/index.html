@@ -426,6 +426,27 @@ Caused by: java.sql.SQLSyntaxErrorException: Table/View 'WIFE_HUSBAND' does not 
                 </td>
                 <td>
                     <pre>
+Internal Exception: java.sql.SQLSyntaxErrorException: Table/View 'HUSBAND_WIFE' does not exist.
+Error Code: 20000
+Call: INSERT INTO HUSBAND_WIFE (wives_ID, Husband_ID) VALUES (?, ?)
+	bind => [2 parameters bound]
+
+...
+
+Caused by: java.sql.SQLSyntaxErrorException: Table/View 'HUSBAND_WIFE' does not exist.
+	at org.apache.derby.client.am.SQLExceptionFactory40.getSQLException(Unknown Source)
+	at org.apache.derby.client.am.SqlException.getSQLException(Unknown Source)
+	at org.apache.derby.client.am.Connection.prepareStatement(Unknown Source)
+	at com.sun.gjc.spi.base.ConnectionHolder.prepareStatement(ConnectionHolder.java:586)
+	at com.sun.gjc.spi.jdbc40.ConnectionWrapper40.prepareCachedStatement(ConnectionWrapper40.java:255)
+	at com.sun.gjc.spi.jdbc40.ConnectionWrapper40.prepareCachedStatement(ConnectionWrapper40.java:52)
+	at com.sun.gjc.spi.ManagedConnectionImpl.prepareCachedStatement(ManagedConnectionImpl.java:992)
+	at com.sun.gjc.spi.jdbc40.ConnectionWrapper40.prepareStatement(ConnectionWrapper40.java:173)
+	at org.eclipse.persistence.internal.databaseaccess.DatabaseAccessor.prepareStatement(DatabaseAccessor.java:1556)
+	at org.eclipse.persistence.internal.databaseaccess.DatabaseAccessor.prepareStatement(DatabaseAccessor.java:1505)
+	at org.eclipse.persistence.internal.databaseaccess.DatabaseCall.prepareStatement(DatabaseCall.java:778)
+	at org.eclipse.persistence.internal.databaseaccess.DatabaseAccessor.basicExecuteCall(DatabaseAccessor.java:619)
+	... 66 more
                     </pre>
                 </td>
                 <td>

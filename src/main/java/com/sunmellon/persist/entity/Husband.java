@@ -27,6 +27,9 @@ public class Husband implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private Collection<Wife> wives;
+    
     public Long getId() {
         return id;
     }
@@ -40,6 +43,14 @@ public class Husband implements Serializable {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
+    }
+
+    public Collection<Wife> getWives() {
+        return wives;
+    }
+
+    public void setWives(Collection<Wife> wives) {
+        this.wives = wives;
     }
 
     @Override
