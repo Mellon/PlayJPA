@@ -43,8 +43,6 @@ public class JPAServlet extends HttpServlet {
         Husband husband = new Husband();
         Husband husband2 = new Husband();
         Wife wife = new Wife();
-        husband.setWife(wife);
-        husband2.setWife(wife);
         Collection<Husband> husbands = new ArrayList<>();
         husbands.add(husband);
         husbands.add(husband2);
@@ -56,10 +54,10 @@ public class JPAServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>OneToMany bidirectional relationship</title>");            
+            out.println("<title>OneToMany unidirectional relationship</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>OneToMany bidirectional relationship</h1>");
+            out.println("<h1>OneToMany unidirectional relationship</h1>");
             out.println("</body>");
             out.println("</html>");
         }
