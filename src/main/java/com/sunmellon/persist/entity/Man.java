@@ -12,27 +12,36 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @author csun
  */
 @Entity
-public class Husband implements Serializable {
+public class Man implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private Collection<Woman> women;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Collection<Woman> getWomen() {
+        return women;
+    }
+
+    public void setWomen(Collection<Woman> women) {
+        this.women = women;
     }
 
     @Override
@@ -45,10 +54,10 @@ public class Husband implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Husband)) {
+        if (!(object instanceof Man)) {
             return false;
         }
-        Husband other = (Husband) object;
+        Man other = (Man) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -57,7 +66,7 @@ public class Husband implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sunmellon.persist.entity.Husband[ id=" + id + " ]";
+        return "com.sunmellon.persist.ejb.Man[ id=" + id + " ]";
     }
     
 }

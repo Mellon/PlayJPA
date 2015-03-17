@@ -5,7 +5,7 @@
  */
 package com.sunmellon.persist.ejb;
 
-import com.sunmellon.persist.entity.Wife;
+import com.sunmellon.persist.entity.Woman;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author csun
  */
 @Stateless
-public class WifeFacade extends AbstractFacade<Wife> {
+public class WomanFacade extends AbstractFacade<Woman> {
     @PersistenceContext(unitName = "PlayJPA")
     private EntityManager em;
 
@@ -24,8 +24,8 @@ public class WifeFacade extends AbstractFacade<Wife> {
         return em;
     }
 
-    public WifeFacade() {
-        super(Wife.class);
+    public WomanFacade() {
+        super(Woman.class);
     }
     
 }

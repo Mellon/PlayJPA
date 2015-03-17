@@ -5,10 +5,10 @@
  */
 package com.sunmellon.web;
 
-import com.sunmellon.persist.ejb.HusbandFacade;
-import com.sunmellon.persist.ejb.WifeFacade;
-import com.sunmellon.persist.entity.Husband;
-import com.sunmellon.persist.entity.Wife;
+import com.sunmellon.persist.ejb.ManFacade;
+import com.sunmellon.persist.ejb.WomanFacade;
+import com.sunmellon.persist.entity.Man;
+import com.sunmellon.persist.entity.Woman;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -26,9 +26,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "JPAServlet", urlPatterns = {"/jpa"})
 public class JPAServlet extends HttpServlet {
-    @EJB HusbandFacade husbandFacade;
-    @EJB WifeFacade wifeFacade;
 
+    @EJB ManFacade manFacade;
+    @EJB WomanFacade womanFacade;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,10 +40,7 @@ public class JPAServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Husband husband = new Husband();
-        Wife wife = new Wife();
-        wife.setHusband(husband);
-        wifeFacade.create(wife);
+        manAsOwner();
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -58,6 +55,18 @@ public class JPAServlet extends HttpServlet {
             out.println("</html>");
         }
     }
+    
+    private void manAsOwner(){
+        Man man = new Man();
+        Woman woman = new Woman();
+        Woman woman2 = new Woman();
+        Collection<Woman> women = new ArrayList<>();
+        women.add(woman);
+        women.add(woman2);
+        man.setWomen(women);
+        manFacade.create(man);
+    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
