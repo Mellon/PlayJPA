@@ -25,7 +25,7 @@ public class Woman implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @ManyToMany(mappedBy = "women")
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Collection<Man> men;
     
     
