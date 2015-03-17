@@ -42,11 +42,7 @@ public class JPAServlet extends HttpServlet {
             throws ServletException, IOException {
         Husband husband = new Husband();
         Wife wife = new Wife();
-        Wife wife2 = new Wife();
-        Collection<Wife> wives = new ArrayList<>();
-        wives.add(wife);
-        wives.add(wife2);
-        husband.setWives(wives);
+        husband.setWife(wife);
         husbandFacade.create(husband);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -54,10 +50,10 @@ public class JPAServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>OneToMany unidirectional relationship</title>");            
+            out.println("<title>ManyToOne unidirectional relationship</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>OneToMany unidirectional relationship</h1>");
+            out.println("<h1>ManyToOne unidirectional relationship</h1>");
             out.println("</body>");
             out.println("</html>");
         }
