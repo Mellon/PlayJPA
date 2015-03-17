@@ -42,8 +42,8 @@ public class JPAServlet extends HttpServlet {
             throws ServletException, IOException {
         Husband husband = new Husband();
         Wife wife = new Wife();
-        husband.setWife(wife);
-        husbandFacade.create(husband);
+        wife.setHusband(husband);
+        wifeFacade.create(wife);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
