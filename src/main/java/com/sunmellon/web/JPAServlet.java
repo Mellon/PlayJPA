@@ -11,6 +11,8 @@ import com.sunmellon.persist.entity.Husband;
 import com.sunmellon.persist.entity.Wife;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +42,13 @@ public class JPAServlet extends HttpServlet {
             throws ServletException, IOException {
         Husband husband = new Husband();
         Wife wife = new Wife();
-        husband.setWife(wife);
+        Wife wife2 = new Wife();
+        wife.setHusband(husband);//Have to set wife a husband, otherwise Wife record will get a null husband_id
+        wife2.setHusband(husband);//Have to set wife a husband, otherwise Wife record will get a null husband_id
+        Collection<Wife> wives = new ArrayList<>();
+        wives.add(wife);
+        wives.add(wife2);
+        husband.setWives(wives);
         husbandFacade.create(husband);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -48,10 +56,10 @@ public class JPAServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>OneToOne unidirectional relationship</title>");            
+            out.println("<title>OneToMany bidirectional relationship</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>OneToOne unidirectional relationship</h1>");
+            out.println("<h1>OneToMany bidirectional relationship</h1>");
             out.println("</body>");
             out.println("</html>");
         }

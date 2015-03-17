@@ -6,11 +6,13 @@
 package com.sunmellon.persist.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -24,8 +26,8 @@ public class Husband implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToOne(cascade = CascadeType.PERSIST)
-    private Wife wife;
+    @OneToMany(mappedBy = "husband", cascade = CascadeType.PERSIST)
+    private Collection<Wife> wives;
 
     public Long getId() {
         return id;
@@ -35,12 +37,12 @@ public class Husband implements Serializable {
         this.id = id;
     }
 
-    public Wife getWife() {
-        return wife;
+    public Collection<Wife> getWives() {
+        return wives;
     }
 
-    public void setWife(Wife wife) {
-        this.wife = wife;
+    public void setWives(Collection<Wife> wives) {
+        this.wives = wives;
     }
 
     @Override
