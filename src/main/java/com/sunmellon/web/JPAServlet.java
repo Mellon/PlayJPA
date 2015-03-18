@@ -40,7 +40,19 @@ public class JPAServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        womanAsOwner();
+//        Man man = new Man();
+//        Woman woman = new Woman();
+//        Woman woman2 = new Woman();
+//        Collection<Woman> women = new ArrayList<>();
+//        women.add(woman);
+//        women.add(woman2);
+//        man.setWomen(women);
+//        manFacade.create(man);
+        
+        Man man = manFacade.find(204L);
+        System.out.println("man = "+man);
+        System.out.println("man.getWomen().size() = "+man.getWomen().size());
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -54,17 +66,6 @@ public class JPAServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-    }
-    
-    private void womanAsOwner(){
-        Man man = new Man();
-        Man man2 = new Man();
-        Woman woman = new Woman();
-        Collection<Man> men = new ArrayList<>();
-        men.add(man);
-        men.add(man2);
-        woman.setMen(men);
-        womanFacade.create(woman);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

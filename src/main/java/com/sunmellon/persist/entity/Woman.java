@@ -6,13 +6,13 @@
 package com.sunmellon.persist.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -23,11 +23,7 @@ public class Woman implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    private Collection<Man> men;
-    
+    private Long id;    
     
     public Long getId() {
         return id;
@@ -36,15 +32,7 @@ public class Woman implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public Collection<Man> getMen() {
-        return men;
-    }
-
-    public void setMen(Collection<Man> men) {
-        this.men = men;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
